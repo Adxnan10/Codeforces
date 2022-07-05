@@ -30,13 +30,13 @@ def appendToReadMe():
 # Codeforces
 A repository to keep track of my solutions to problems in Codeforces.
 # Solved Problems
-| # | Title | Solution | lang | Submitted |
-|---| ----- | -------- | ---- | --------- |
+| # | Title | Solution | Submitted |
+|---| ----- | -------- | --------- |
 """
   with open("README.md", "w") as README:
     README.write(intro)
     for index, problem in enumerate(solved_problems):
-      problem_row = f"{index + 1} | [{problem['name']}]({problem['link']}) | {problem['solution']} | {problem['lang']} | {problem['date']} |"
+      problem_row = f"{index + 1} | [{problem['name']}]({problem['link']}) | [{problem['lang']}]({problem['solution']}) | {problem['date']} |"
       README.write(problem_row + "\n")
       
 appendToReadMe()
