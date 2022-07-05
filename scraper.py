@@ -15,7 +15,7 @@ def getSolvedProblems():
     if problem.find(class_ ="verdict-accepted"):
       problem_info = problem.find_all(recursive=False)
       problem_object = {
-        # "source" : problem_info[0].a['href'], I might use it instead of pushing my code locally.
+        "solution" : "https://codeforces.com"+ problem_info[0].a['href'], 
         "date" : problem_info[1].getText().strip(),
         "link" : "https://codeforces.com" + problem_info[3].a['href'],
         "name" : problem_info[3].a.getText().strip(),
@@ -30,13 +30,13 @@ def appendToReadMe():
 # Codeforces
 A repository to keep track of my solutions to problems in Codeforces.
 # Solved Problems
-| # | Title | lang | Submitted |
-|---| ----- | ---- | --------- |
+| # | Title | Solution | lang | Submitted |
+|---| ----- | -------- | ---- | --------- |
 """
   with open("README.md", "w") as README:
     README.write(intro)
     for index, problem in enumerate(solved_problems):
-      problem_row = f"{index + 1} | [{problem['name']}]({problem['link']}) | {problem['lang']} | {problem['date']} |"
+      problem_row = f"{index + 1} | [{problem['name']}]({problem['link']}) | {problem['solution']} | {problem['lang']} | {problem['date']} |"
       README.write(problem_row + "\n")
       
 appendToReadMe()
