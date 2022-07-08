@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+from solution import importSolution
 
 # function to extract html document from Codeforces
 def getHTMLdocument(url):
@@ -24,7 +25,7 @@ def getSolvedProblems():
       solved_problems.append(problem_object)
   return solved_problems
 
-def appendToReadMe():
+def updateSolutions():
   solved_problems = getSolvedProblems()
   intro = """
 # Codeforces
@@ -38,5 +39,6 @@ A repository to keep track of my solutions to problems in Codeforces.
     for index, problem in enumerate(solved_problems):
       problem_row = f"{index + 1} | [{problem['name']}]({problem['link']}) | [{problem['lang']}]({problem['solution']}) | {problem['date']} |"
       README.write(problem_row + "\n")
+      importSolution(problem['name'], problem['lang'], problem['solution'])
       
-appendToReadMe()
+updateSolutions()
